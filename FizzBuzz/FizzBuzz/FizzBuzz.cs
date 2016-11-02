@@ -9,33 +9,21 @@ namespace FizzBuzz
         [TestMethod]
         public void VerificationMultiple()
         {
-            Assert.AreEqual("Fizz", CalculateMultiple(3, "Fizz", "Buzz"));
-            Assert.AreEqual("Buzz", CalculateMultiple(5, "Fizz", "Buzz"));
-            Assert.AreEqual("FizzBuzz", CalculateMultiple(15, "Fizz", "Buzz"));
-            Assert.AreEqual("nu exista", CalculateMultiple(8, "Fizz", "Buzz"));
+            Assert.AreEqual("Fizz", CalculateMultiple(3));
+            Assert.AreEqual("Buzz", CalculateMultiple(5));
+            Assert.AreEqual("FizzBuzz", CalculateMultiple(15));
+            Assert.AreEqual("nu exista", CalculateMultiple(8));
         }
 
-        string CalculateMultiple(int multiple, string wordThree, string wordFive)
+        string CalculateMultiple(int multiple)
         {
-            
+            if (multiple % 15 == 0)
+                return "FizzBuzz";
             if (multiple % 3 == 0)
-            {
-
-                if (multiple % 5 == 0)
-                    return wordThree + wordFive;
-                else
-                    return wordThree;
-
-            }
-            else
-                if (multiple % 5 == 0)
-                    return wordFive;
-
+                return "Fizz";
+            if (multiple % 5 == 0)
+                return "Buzz";
             return "nu exista";
-
         }
-
-
-
     }
 }
