@@ -20,61 +20,78 @@ namespace RomanNumerals
 
 
         }
-        string CreateRomanNumerals(int nr)
+        string CreateRomanNumerals(int number)
         {
             string romanNumerals=string.Empty;
-            int number = nr;
-            for(int i=0;i<=number;i++)
+            int unit = number % 10;
+            int dozens = number / 10;
+            switch (dozens)
             {
-                
-                if (number >= 100)
-                {
+                case 10:
                     romanNumerals += "C";
-                    number -= 100;
-                }
-                if (number >= 90)
-                {
+                    break;
+                case 9:
                     romanNumerals += "XC";
-                    number -= 90;
-                }
-
-                if (number >= 50 && number < 90)
-                {
+                    break;
+                case 8:
+                    romanNumerals += "LXXX";
+                    break;
+                case 7:
+                    romanNumerals += "LXX";
+                    break;
+                case 6:
+                    romanNumerals += "LX";
+                    break;
+                case 5:
                     romanNumerals += "L";
-                    number -= 50;
-                }
-                if (number >= 40)
-                {
+                    break;
+                case 4:
                     romanNumerals += "XL";
-                    number -= 40;
-                }
-                while (number >= 10 && number < 40)
-                {
+                    break;
+                case 3:
+                    romanNumerals += "XXX";
+                    break;
+                case 2:
+                    romanNumerals += "XX";
+                    break;
+                case 1:
                     romanNumerals += "X";
-                    number -= 10;
-                }
-                if (number >= 9)
-                {
+                    break;
+
+
+            }
+            switch (unit)
+            {
+                case 9:
                     romanNumerals += "IX";
-                    number -= 9;
-                }
-                while (number >= 5 && number <= 8)
-                {
+                    break;
+                case 8:
+                    romanNumerals += "VIII";
+                    break;
+                case 7:
+                    romanNumerals += "VII";
+                    break;
+                case 6:
+                    romanNumerals += "VI";
+                    break;
+                case 5:
                     romanNumerals += "V";
-                    number -= 5;
-                }
-                if (number == 4)
-                {
+                    break;
+                case 4:
                     romanNumerals += "IV";
-                    number -= 4;
-                }
-                while (number > 0 && number < 4)
-                {
+                    break;
+                case 3:
+                    romanNumerals += "III";
+                    break;
+                case 2:
+                    romanNumerals += "II";
+                    break;
+                case 1:
                     romanNumerals += "I";
-                    number -= 1;
-                }
+                    break;
             }
             return romanNumerals;
+
         }
 
     }
