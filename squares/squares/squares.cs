@@ -23,22 +23,13 @@ namespace squares
         int NumberTheSquares(int squares)
         {
             int number = 0;
-            if (squares >= 1)
-                number += 8 * 8;
-            if (squares >= 2)
-                number += 7 * 7;
-            if (squares >= 3)
-                number += 6 * 6;
-            if (squares >= 4)
-                number += 5 * 5;
-            if (squares >= 5)
-                number += 4 * 4;
-            if (squares >= 6)
-                number += 3 * 3;
-            if (squares >= 7)
-                number += 2 * 2;
-            if (squares >= 8)
-                number += 1;
+            int i = 8;
+            while(squares>0)
+            {
+                number += i * i;
+                i--;
+                squares--;
+            }
             return number;
         }
 
