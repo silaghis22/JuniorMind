@@ -14,7 +14,7 @@ namespace squares
             Assert.AreEqual(149, NumberTheSquares(3));
             Assert.AreEqual(174, NumberTheSquares(4));
             Assert.AreEqual(190, NumberTheSquares(5));
-
+            Assert.AreEqual(199, NumberTheSquares(6));
 
 
         }
@@ -31,7 +31,8 @@ namespace squares
                 number += 5 * 5;
             if (squares >= 5)
                 number += 4 * 4;
-
+            if (squares >= 6)
+                number += 3 * 3;
             return number;
         }
 
