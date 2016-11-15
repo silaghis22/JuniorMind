@@ -11,14 +11,18 @@ namespace squares
         {
             Assert.AreEqual(64, NumberTheSquares(1));
             Assert.AreEqual(113, NumberTheSquares(2));
+            Assert.AreEqual(149, NumberTheSquares(3));
+
         }
         int NumberTheSquares(int squares)
         {
             int number = 0;
             if (squares >= 1)
                 number += 8 * 8;
-            if (squares == 2)
+            if (squares >= 2)
                 number += 7 * 7;
+            if (squares == 3)
+                number += 6 * 6;
             return number;
         }
 
