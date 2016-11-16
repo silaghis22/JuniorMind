@@ -9,14 +9,18 @@ namespace Prefix
         [TestMethod]
         public void TestMethod1()
         {
-            Assert.AreEqual('a', SearchPrefix("abcd", "acd"));
-            Assert.AreEqual('1', SearchPrefix("acv", "cds"));
+            Assert.AreEqual("a", SearchPrefix("abcd", "acd"));
+            Assert.AreEqual("", SearchPrefix("acv", "cds"));
+            Assert.AreEqual("aabcd", SearchPrefix("aabcd", "aabcdrstv"));
         }
-        char SearchPrefix(string word,string _word)
+        string SearchPrefix(string word,string _word)
         {
-            if(word[0]==_word[0])
-                return word[0];
-            return '1';
+            int i;
+            for ( i = 0; i < word.Length; i++)
+                if (word[i] != _word[i])
+                    break;
+            return word.Substring(0, i);
+            //return '1';
         }
     }
 }
