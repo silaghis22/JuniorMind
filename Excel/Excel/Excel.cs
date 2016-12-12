@@ -29,26 +29,21 @@ namespace Excel
         }
 
 
-        string TheColumn(int nrColumn)
+        string TheColumn(int column)
         {
-            string nameColumn= string.Empty;
-            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            if (nrColumn < 27)
-                nameColumn = alphabet[nrColumn - 1] + nameColumn;
-            else
-                while (nrColumn>0)
-                {
-                    if (nrColumn % 26 == 0)
-                        nameColumn = alphabet[25] + nameColumn;
-                    else
-                        nameColumn = alphabet[nrColumn % 26 - 1] + nameColumn;
-                    if(nameColumn[0]== 'Z')
-                        nrColumn = (nrColumn / 26)-1;
-                    else
-                        nrColumn = (nrColumn / 26);
+            string columnName = string.Empty;
+            //string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            while (column>0)
+            {
+                column--;
+                if (column < 26)
+                    columnName = Convert.ToString((char)(65 + column)) + columnName;
+                else
+                    columnName = Convert.ToString((char)(65 + column % 26)) + columnName;
+                column /= 26;
 
-                }
-            return nameColumn;
+            }
+            return columnName;
         }
 
     }
