@@ -36,10 +36,7 @@ namespace Excel
             while (column>0)
             {
                 column--;
-                if (column < 26)
-                    columnName = Convert.ToString((char)(65 + column)) + columnName;
-                else
-                    columnName = Convert.ToString((char)(65 + column % 26)) + columnName;
+                columnName = Convert.ToString((char)('A' + column % 26)) + columnName;
                 column /= 26;
 
             }
