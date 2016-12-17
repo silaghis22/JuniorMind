@@ -16,15 +16,20 @@ namespace Anagrame
         }
         int Permutation (string word)
         {
+            int repetition = Repetition(word);
+            int number = 1;
+            for (int i = 1; i <= word.Length-repetition; i++)
+                number *= i;
+            return number+repetition;
+        }
+        int Repetition (string word)
+        {
             int repetition = 0;
             for (int i = 0; i < word.Length; i++)
                 for (int j = i + 1; j < word.Length; j++)
                     if (word[i] == word[j])
                         repetition++;
-            int number = 1;
-            for (int i = 1; i <= word.Length-repetition; i++)
-                number *= i;
-            return number+repetition;
+            return repetition;
         }
     }
 }
