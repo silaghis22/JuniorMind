@@ -11,7 +11,8 @@ namespace Anagrame
         {
             Assert.AreEqual(2, Permutation( "ab"));
             Assert.AreEqual(24, Permutation("sami"));
-            Assert.AreEqual(2, Permutation("abb"));
+            Assert.AreEqual(3, Permutation("abb"));
+            Assert.AreEqual(4, Permutation("abbb"));
         }
         int Permutation (string word)
         {
@@ -23,7 +24,7 @@ namespace Anagrame
             int number = 1;
             for (int i = 1; i <= word.Length-repetition; i++)
                 number *= i;
-            return number;
+            return number+repetition;
         }
     }
 }
