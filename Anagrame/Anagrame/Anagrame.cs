@@ -11,24 +11,40 @@ namespace Anagrame
         {
             Assert.AreEqual(2, Permutation( "ab"));
             Assert.AreEqual(24, Permutation("sami"));
-            Assert.AreEqual(3, Permutation("abb"));
-            Assert.AreEqual(4, Permutation("abbb"));
+            Assert.AreEqual(1, Repetition("abb"));
+            Assert.AreEqual(3, Repetition("abbb"));
+            Assert.AreEqual(4, Repetition("aabbb"));
+            Assert.AreEqual(4, Repetition("babab"));
         }
         int Permutation (string word)
         {
             int repetition = Repetition(word);
             int number = 1;
-            for (int i = 1; i <= word.Length-repetition; i++)
-                number *= i;
-            return number+repetition;
+            if(repetition == 0)
+            {
+                for (int i = 1; i <= word.Length; i++)
+                    number *= i;
+                return number;
+            }
+
+            if(repetition>word.Length-repetition)
+            {
+                for (int i = 1; i <= word.Length; i++)
+                    number *= i;
+                return number;
+
+            }
+
         }
-        int Repetition (string word)
+        private int Repetition (string word)
         {
-            int repetition = 0;
-            for (int i = 0; i < word.Length; i++)
-                for (int j = i + 1; j < word.Length; j++)
+            int repetition = 0 ;
+            int length = word.Length;
+            for (int i = 0; i < length - 1; i++)
+                for (int j = i + 1; j < length; j++)
                     if (word[i] == word[j])
                         repetition++;
+                        
             return repetition;
         }
     }
