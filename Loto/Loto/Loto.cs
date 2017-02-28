@@ -24,9 +24,9 @@ namespace Loto
         [TestMethod]
         public void TestMethod3()
         {
-            //Assert.AreEqual(0.00000151, Lottery5of40(1));
+            //Assert.AreEqual ("0.00000152", Lottery5of40());
         }
-        string Lottery5of40(int category)
+        string Lottery5of40()
         {
             return  (Combinations(5, 5) * Combinations(35, 0) / Combinations(40, 5)).ToString("N8");
 
@@ -34,13 +34,13 @@ namespace Loto
         string Lottery6Of49(int category)
         {
             if (category == 1)
-                return String.Format("{0:0.00000000}", (Combinations(6, 6) * Combinations(43, 0) / Combinations(49, 6)));
+                return string.Format("{0:0.00000000}", (Combinations(6, 6) * Combinations(43, 0) / Combinations(49, 6)));
             if (category ==2)
-                return String.Format("{0:0.00000000}", (Combinations(6, 5) * Combinations(43, 1) / Combinations(49, 6)));
-            return String.Format("{0:0.00000000}", (Combinations(6, 4) * Combinations(43, 2) / Combinations(49, 6)));
+                return string.Format("{0:0.00000000}", (Combinations(6, 5) * Combinations(43, 1) / Combinations(49, 6)));
+            return string.Format("{0:0.00000000}", (Combinations(6, 4) * Combinations(43, 2)) / Combinations(49, 6));
 
         }
-        private static int Combinations(int n, int k)
+        private static double Combinations(long n, int k)
         {
             if (k == 0)
                 return 1;
