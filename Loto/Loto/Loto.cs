@@ -20,10 +20,8 @@ namespace Loto
                 {
                     case 5:
                         return Convert.ToDouble((Combinations(5, 5) * Combinations(35, 0) / Combinations(40, 5)).ToString("N8"));
-                        break;
                     default:
                         return 0;
-                        break;
                 }
             else
             {
@@ -33,20 +31,15 @@ namespace Loto
                     {
                         case 4:
                             return Convert.ToDouble((Combinations(6, 4) * Combinations(43, 2) / Combinations(49, 6)).ToString("N8"));
-                            break;
                         case 5:
                             return Convert.ToDouble((Combinations(6, 5) * Combinations(43, 1) / Combinations(49, 6)).ToString("N8"));
-                            break;
                         case 6:
                             return Convert.ToDouble((Combinations(6, 6) * Combinations(43, 0) / Combinations(49, 6)).ToString("N8"));
-                            break;
                         default:
                             return 0;
-                            break;
                     }
                 }
-                else
-                    return 0;
+                return 0;
             }
                
         }
