@@ -16,29 +16,11 @@ namespace Loto
         double Lottery(int number,int of)
         {
             if (of == 40)
-                switch (number)
-                {
-                    case 5:
-                        return Convert.ToDouble((Combinations(5, 5) * Combinations(35, 0) / Combinations(40, 5)).ToString("N8"));
-                    default:
-                        return 0;
-                }
+                return Convert.ToDouble((Combinations(5, number) * Combinations(35, 5-number) / Combinations(40, 5)).ToString("N8"));
             else
             {
                 if (of == 49)
-                {
-                    switch (number)
-                    {
-                        case 4:
-                            return Convert.ToDouble((Combinations(6, 4) * Combinations(43, 2) / Combinations(49, 6)).ToString("N8"));
-                        case 5:
-                            return Convert.ToDouble((Combinations(6, 5) * Combinations(43, 1) / Combinations(49, 6)).ToString("N8"));
-                        case 6:
-                            return Convert.ToDouble((Combinations(6, 6) * Combinations(43, 0) / Combinations(49, 6)).ToString("N8"));
-                        default:
-                            return 0;
-                    }
-                }
+                    return Convert.ToDouble((Combinations(6, number) * Combinations(43, 6-number) / Combinations(49, 6)).ToString("N8"));
                 return 0;
             }
                
