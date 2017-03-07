@@ -15,17 +15,16 @@ namespace Loto
         }
         double Lottery(int number,int of)
         {
-            if (of == 40)
-                return Convert.ToDouble((Combinations(5, number) * Combinations(35, 5-number) / Combinations(40, 5)).ToString("N8"));
-            else
-            {
-                if (of == 49)
-                    return Convert.ToDouble((Combinations(6, number) * Combinations(43, 6-number) / Combinations(49, 6)).ToString("N8"));
-                return 0;
-            }
-               
-        }
+            int numberHelp = NumberHlep(of) ;
 
+            return Convert.ToDouble((Combinations(numberHelp, number) * Combinations(of-numberHelp, numberHelp - number) / Combinations(of, numberHelp)).ToString("N8"));
+        }
+        private int NumberHlep (int of)
+        {
+            if (of == 40)
+                return 5;
+            else return  6;
+        }
         private static double Combinations(long n, int k)
         {
             if (k == 0)
