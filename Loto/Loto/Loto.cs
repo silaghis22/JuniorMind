@@ -8,22 +8,14 @@ namespace Loto
         [TestMethod]
         public void TestMethod1()
         {
-            Assert.AreEqual(0.00000152, Lottery(5,40));
-            Assert.AreEqual(0.00000007, Lottery(6,49));
-            Assert.AreEqual(0.00001845, Lottery(5,49));
-            Assert.AreEqual(0.00096862, Lottery(4,49));
+            Assert.AreEqual(0.00000152, CalculateTheProbability(5,5,40));
+            Assert.AreEqual(0.00000007, CalculateTheProbability(6,6,49));
+            Assert.AreEqual(0.00001845, CalculateTheProbability(5,6,49));
+            Assert.AreEqual(0.00096862, CalculateTheProbability(4,6,49));
         }
-        double Lottery(int number,int of)
+        double CalculateTheProbability(int guessedNumbers, int drawnNumbers, int of)
         {
-            int numberHelp = NumberHlep(of) ;
-
-            return Convert.ToDouble((Combinations(numberHelp, number) * Combinations(of-numberHelp, numberHelp - number) / Combinations(of, numberHelp)).ToString("N8"));
-        }
-        private int NumberHlep (int of)
-        {
-            if (of == 40)
-                return 5;
-            else return  6;
+            return Convert.ToDouble((Combinations(drawnNumbers, guessedNumbers) * Combinations(of - drawnNumbers, drawnNumbers - guessedNumbers) / Combinations(of, drawnNumbers)).ToString("N8"));
         }
         private static double Combinations(long n, int k)
         {
