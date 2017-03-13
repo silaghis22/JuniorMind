@@ -9,35 +9,38 @@ namespace OperatiiPeBiti
         [TestMethod]
         public void TestMethod1()
         {
-            //Assert.AreEqual(new byte[] { 1, 1, 0, 0, 0, 1 }, ConversionFromDecimalInBaseTwo(49));
-            Assert.AreEqual("110001",ConversionFromDecimalInBaseTwo(49));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0, 1, 1 },ConversionFromDecimalInRandomBase(49,2));
+            Assert.AreEqual(49, ConversionFromRandomBaseInDecimal(new byte[] { 1, 0, 0, 0, 1, 1 }, 2));
         }
-        /*byte[] ConversionFromDecimalInBaseTwo (int number)
+        byte[] ConversionFromDecimalInRandomBase (int number , int randomBase)
         {
-            byte[] array = new byte [32];
+            int length = CalculatePower(number, randomBase);
+            byte[] array =new byte [length] ;
             int i = 0;
             while (number>0)
             {
-
-                for (int j = i; j > 0; j--)
-                    array[j] = array[j - 1];
-                array[i] =(byte)(number % 2);
-                number /= 2;
+                array[i] =(byte)(number % randomBase);
+                number /= randomBase;
                 i++; 
                       
             }
 
             return array;
-        }*/
-        string ConversionFromDecimalInBaseTwo(int number)
-        {
-            string array=String.Empty;
-            while (number>0)
-            {
-                array = Convert.ToString(number % 2)+ array;
-                number /= 2;
-            }
-            return array;
         }
+        int CalculatePower(int number , int randomBase)
+        {
+            int pow = 0;
+            while (number > Math.Pow(randomBase, pow))
+                pow++;
+            return pow;
+        }
+        int ConversionFromRandomBaseInDecimal(byte[] array , int randomBase)
+        {
+            int number = 0;
+            for (int i = 0; i < array.Length; i++)
+                number +=array[i]*(int)( Math.Pow(randomBase, i)); 
+            return number;
+        }
+
     }
 }
