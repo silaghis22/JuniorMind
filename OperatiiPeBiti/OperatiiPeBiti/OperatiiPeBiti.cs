@@ -11,8 +11,8 @@ namespace OperatiiPeBiti
         {
             CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0, 1, 1 },ConversionFromDecimalInRandomBase(49,2));
             Assert.AreEqual(49, ConversionFromRandomBaseInDecimal(new byte[] { 1, 0, 0, 0, 1, 1 }, 2));
-            Assert.AreEqual(1, ShiftRight(new byte[] {0,0,0,1 }, 2, 3));
-            Assert.AreEqual(20, ShiftLeft(new byte[] { 1, 0, 1 }, 2, 2));
+            CollectionAssert.AreEqual(new byte[] { 1, 0, 0, 0 }, ShiftRight(new byte[] { 0, 0, 0, 1 }, 3));
+            CollectionAssert.AreEqual(new byte[] { 0, 0, 0, 1 }, ShiftLeft(new byte[] { 1, 0, 0, 0 }, 3));
         }
         byte[] ConversionFromDecimalInRandomBase (int number , int randomBase)
         {
@@ -43,19 +43,35 @@ namespace OperatiiPeBiti
                 number +=array[i]*(int)( Math.Pow(randomBase, i)); 
             return number;
         }
-        int ShiftRight(byte[] array, int randomBase, int numberOfPositions)
+        byte[] ShiftRight(byte[] array, int numberOfPositions)
         {
-            int number = ConversionFromRandomBaseInDecimal(array, randomBase);
-            for (int i = 1; i <= numberOfPositions; i++)
-                number /= randomBase;
-            return number;
+
+            while(numberOfPositions>0)
+            {
+                for (int i = 0; i < array.Length-1; i++)
+                {
+                    byte auxiliary = array[i];
+                    array[i] = array[i + 1];
+                    array[i + 1] = auxiliary;
+                }
+                numberOfPositions--;
+            }
+            return array;
         }
-        int ShiftLeft(byte[] array, int randomBase, int numberOfPositions)
+        byte[] ShiftLeft(byte[] array, int numberOfPositions)
         {
-            int number = ConversionFromRandomBaseInDecimal(array, randomBase);
-            for (int i = 1; i <= numberOfPositions; i++)
-                number *= randomBase;
-            return number;
+            while (numberOfPositions > 0)
+            {
+                for (int i = array.Length-1; i >= 1; i--)
+                {
+                    byte auxiliary = array[i];
+                    array[i] = array[i - 1];
+                    array[i - 1] = auxiliary;
+                }
+                numberOfPositions--;
+            }
+
+            return array;
         }
 
     }
